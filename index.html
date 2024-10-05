@@ -13,6 +13,7 @@
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
             color: white;
+            transition: background-color 0.5s ease; /* Smooth background transition */
         }
 
         @keyframes gradient {
@@ -25,6 +26,7 @@
             text-align: center;
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.7);
+            transition: background-color 0.5s ease; /* Smooth header transition */
         }
 
         h1 {
@@ -43,11 +45,12 @@
             padding: 10px 20px;
             background-color: rgba(255, 255, 255, 0.2);
             border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s; /* Smooth hover effects */
         }
 
         nav a:hover {
             background-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05); /* Scale effect on hover */
         }
 
         .tab-content {
@@ -56,10 +59,12 @@
             background-color: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
             margin: 20px;
+            transition: opacity 0.5s ease; /* Smooth opacity transition */
         }
 
         .active {
             display: block;
+            opacity: 1; /* Make active tab fully visible */
         }
 
         #videos {
@@ -91,16 +96,18 @@
             border-radius: 10px;
             overflow: hidden;
             width: 300px; /* Fixed width for horizontal layout */
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s; /* Smooth box shadow transition */
         }
 
         .video:hover {
             transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3); /* Add shadow on hover */
         }
 
         iframe {
             width: 100%;
             height: 169px;
+            border: none; /* Remove default border from iframe */
         }
 
         footer {
@@ -158,7 +165,7 @@
             <p>Email: <a href="mailto:colecomerford@icloud.com">colecomerford@icloud.com</a></p>
             <p>YouTube Channel: <a href="https://www.youtube.com/channel/UCA8hBYGvU9eg8TqxXcH0tnQ" target="_blank">Visit My Channel</a></p>
             <blockquote class="imgur-embed-pub" lang="en" data-id="a/WRsFoLE" data-context="false"><a href="//imgur.com/a/WRsFoLE"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
-            <img src="https://i.imgur.com/9BOZio8.jpg" alt="Cole's Image" class="profile-image"> <!-- Replace with your image URL -->
+            <img src="https://i.imgur.com/1boIkw8.jpeg" alt="Cole's Image" class="profile-image"> <!-- Updated image URL -->
         </div>
     </div>
 
@@ -191,8 +198,12 @@
             const tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(tab => {
                 tab.classList.remove('active');
+                tab.style.opacity = 0; // Fade out the tab
             });
-            document.getElementById(tabId).classList.add('active');
+
+            const activeTab = document.getElementById(tabId);
+            activeTab.classList.add('active');
+            activeTab.style.opacity = 1; // Fade in the active tab
 
             // Hide videos when not selected
             if (tabId !== 'videos') {
@@ -212,4 +223,5 @@
     </script>
 </body>
 </html>
+
 
