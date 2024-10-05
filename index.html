@@ -64,9 +64,25 @@
 
         #videos {
             display: flex; /* Horizontal layout */
-            flex-wrap: wrap; /* Allow videos to wrap */
-            justify-content: center; /* Center videos */
+            overflow-x: auto; /* Enable horizontal scrolling */
             margin: 20px;
+            padding: 10px;
+            padding-bottom: 20px;
+            scrollbar-width: thin; /* For Firefox */
+            -ms-overflow-style: -ms-autohiding-scrollbar; /* For Internet Explorer and Edge */
+        }
+
+        #videos::-webkit-scrollbar {
+            height: 8px; /* Height for the horizontal scrollbar */
+        }
+
+        #videos::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.5); /* Color of the scrollbar */
+            border-radius: 10px; /* Round edges */
+        }
+
+        #videos::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.2); /* Color of the track */
         }
 
         .video {
@@ -108,8 +124,11 @@
         }
 
         .profile-image {
-            max-width: 300px;
+            max-width: 100%; /* Responsive width */
+            height: auto; /* Maintain aspect ratio */
             margin-top: 20px; /* Margin for the image */
+            border-radius: 10px; /* Round corners for the image */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
         }
     </style>
 </head>
@@ -138,7 +157,8 @@
         <div class="contact-info">
             <p>Email: <a href="mailto:colecomerford@icloud.com">colecomerford@icloud.com</a></p>
             <p>YouTube Channel: <a href="https://www.youtube.com/channel/UCA8hBYGvU9eg8TqxXcH0tnQ" target="_blank">Visit My Channel</a></p>
-            <img class="profile-image" src="https://i.imgur.com/4eE4t1M.jpg" alt="Cole's Image"> <!-- Updated with your image URL -->
+            <blockquote class="imgur-embed-pub" lang="en" data-id="a/WRsFoLE" data-context="false"><a href="//imgur.com/a/WRsFoLE"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+            <img src="https://i.imgur.com/9BOZio8.jpg" alt="Cole's Image" class="profile-image"> <!-- Replace with your image URL -->
         </div>
     </div>
 
@@ -177,6 +197,8 @@
             // Hide videos when not selected
             if (tabId !== 'videos') {
                 document.getElementById('video-list').innerHTML = ''; // Clear videos when not selected
+            } else {
+                fetchVideos(); // Fetch videos only when tab is selected
             }
         }
 
@@ -186,9 +208,8 @@
             showTab('contact'); // Show the contact tab when scrolling
         }
 
-        fetchVideos();
+        fetchVideos(); // Initial fetch of videos
     </script>
 </body>
 </html>
-
 
