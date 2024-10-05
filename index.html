@@ -55,7 +55,7 @@
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
-            margin: 0 20px;
+            margin: 20px;
         }
 
         .active {
@@ -63,7 +63,7 @@
         }
 
         #videos {
-            display: flex; /* Changed to horizontal layout */
+            display: flex; /* Horizontal layout */
             flex-wrap: wrap; /* Allow videos to wrap */
             justify-content: center; /* Center videos */
             margin: 20px;
@@ -173,15 +173,22 @@
                 tab.classList.remove('active');
             });
             document.getElementById(tabId).classList.add('active');
+
+            // Hide videos when not selected
+            if (tabId !== 'videos') {
+                document.getElementById('video-list').innerHTML = ''; // Clear videos when not selected
+            }
         }
 
         function scrollToContact() {
             const contactSection = document.getElementById('contact');
             contactSection.scrollIntoView({ behavior: 'smooth' });
+            showTab('contact'); // Show the contact tab when scrolling
         }
 
         fetchVideos();
     </script>
 </body>
 </html>
+
 
